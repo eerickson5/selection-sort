@@ -1,16 +1,12 @@
 function selectionSort(arr) {
-  function applyFirst (array) {
-    if(array.length > 1){
-      let newArray = [...array];
-      let smallNum = Math.min(...newArray);
-      newArray.splice(newArray.indexOf(smallNum), 1);
-      return [smallNum, ...applyFirst(newArray)];
-    } else {
-      return array;
-    }
-  
+  if(arr.length > 1){
+    let newArray = [...arr];
+    let smallNum = Math.min(...newArray);
+    newArray.splice(newArray.indexOf(smallNum), 1);
+    return [smallNum, ...selectionSort(newArray)];
+  } else {
+    return arr;
   }
-  return applyFirst(arr);
 }
 
 if (require.main === module) {
